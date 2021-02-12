@@ -1,26 +1,27 @@
 import React, { Component } from 'react'
+import pokemon from '../data'
 import PokeList from './PokeList.js'
-import pokemon  from '../data.js'
 
 
-export default class SearchPage extends Component {
 
-state = {
-  pokemon: pokemon,
+export default class App extends Component {
+  state = {
+    pokemon: pokemon,
+  }
 
-}
+
 
   render() {
-
     const filterPoke = pokemon.filter((pokemon) => {
-      if (!this.state.pokemon) return true;
-      return false
+      if(!this.state.pokemon) return true;
+      if(pokemon.pokemon === this.state.pokemon){
+        return true;
+      }
     })
-
 
     return (
       <div>
-        <PokeList filterPoke = {filterPoke} />
+        <PokeList pokemon= { filterPoke } />
       </div>
     )
   }

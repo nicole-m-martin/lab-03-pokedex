@@ -16,8 +16,9 @@
   margin-top: 45px;
 }
 
-img {
+.pikaPic {
   height: 300px;
+  width: 550px;
 }
 
 body {

@@ -9,7 +9,7 @@ export default class HomePage extends Component {
       <>
       <section className={style.mainSection}>
       <div className={style.imgBox}>
-      <img alt="pika" src={pika} />
+      <img className={style.pikaPic} alt="pika" src={pika} />
       </div>
       </section>
       </>

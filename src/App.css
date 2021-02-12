@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.poke-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  text-align: center;
+}
+
+img {
+  width: 200px;
+}
