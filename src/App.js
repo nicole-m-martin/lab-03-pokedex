@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import SearchPage from './SearchPage/SearchPage.js';
 import HomePage from './HomePage/HomePage.js';
-import Header from './Header.js'
+import Header from './Header/Header.js'
 
 
 export default class App extends Component {
