@@ -1,29 +1,39 @@
 import React, { Component } from 'react'
 import pokemon from '../data'
 import PokeList from './PokeList.js'
-
+import SearchBar from './SearchBar.js'
+import Sort from './Sort.js'
 
 
 export default class App extends Component {
   state = {
     pokemon: pokemon,
+    search: '',
+
+
+  } 
+
+  
+  searchHandle = (e) => {
+    this.setState({
+      searchPoke: e.target.value
+    })
   }
-
-
+  
 
   render() {
-    const filterPoke = pokemon.filter((pokemon) => {
-      if(!this.state.pokemon) return true;
-      if(pokemon.pokemon === this.state.pokemon){
-        return true;
-      }
-    })
+    const filterPoke = pokemon.filter(pokemon => pokemon.pokemon.includes(this.state.search))
+  
+
+      
 
     return (
-      <div>
-        <PokeList pokemon= { filterPoke } />
-      </div>
-    )
+      <>
+      <SearchBar currentValue={this.state.search}searchHandle={this.searchHandle} />
+      <PokeList filterPoke={filterPoke} />
+
+</>
+    );
   }
 }
 
