@@ -1,49 +1,43 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.poke-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(4, 2fr);
-  text-align: center;
+input,
+select {
+  display: block;
+  padding: 10px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 5px;
+  width: 15%;
+  margin: 15px;
+  margin-left: 10px;
+  outline: none;
 }
 
 img {
   width: 200px;
+}
+
+.poke-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+  width: 70%;
+  margin-left: 18%;
+}
+
+.poke-cards li {
+  list-style: none;
+}
+
+.poke-card {
+  border: solid 2px blue;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.poke-card-back {
+  border-top: 2px solid black;
+}
+
+body {
+  background: #000 url('./img/background.png') no-repeat center center/cover;
 }

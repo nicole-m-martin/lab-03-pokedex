@@ -7,11 +7,11 @@ import PokeItem from './PokeItem.js'
 export default class PokeList extends Component {
   render() {
     return (
-      <ul>
+      <section className='poke-cards'>
           {this.props.filterPoke.map(pokemon => 
           <PokeItem pokemon={pokemon} key={pokemon._id}/>
               )}
-              </ul>
+              </section>
     )
   }
 }

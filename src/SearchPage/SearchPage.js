@@ -4,6 +4,7 @@ import PokeList from './PokeList.js'
 import SearchBar from './SearchBar.js'
 import Sort from './Sort.js'
 
+
 // set the global state
 export default class App extends Component {
   state = {
