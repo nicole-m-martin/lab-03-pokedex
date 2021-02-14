@@ -35,19 +35,3 @@ export default class PokeList extends Component {
 // }
 
 // export default PokeList
-
-
-
-// const CharacterGrid = ({items, isLoading}) => {
-//   // This is returning the loading with a ternary function. If its loading then show the spinner. if is not loading at the cards with a section
-//   return isLoading ? (<Spinner />) : (<section className='cards'>
-//     {/* Now use map to loop through and output what you want */}
-//     {/* Open un an expression and */}
-//     {items.map((item) =>(
-//       <CharacterItem key={item.char_id} item={item}></CharacterItem>
-//     ))}
-//   </section>)
-  
-// }
-
-// export default CharacterGrid
