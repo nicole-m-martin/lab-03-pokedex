@@ -7,9 +7,10 @@ export default class SearchBar extends Component {
     return (
       <>
       <div>
-        <input type='text' 
-        placeholder='Find Your Pokemon...'
-        onChange={this.props.searchHandle} />
+        <input type= 'text' 
+        placeholder= 'Find Your Pokemon...'
+        value= {this.props.currentValue}
+        onChange= {this.props.searchHandle} />
       </div>
     </>
 

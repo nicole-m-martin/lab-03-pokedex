@@ -16,7 +16,7 @@ export default class App extends Component {
   
   searchHandle = (e) => {
     this.setState({
-      searchPoke: e.target.value
+      search: e.target.value
     })
   }
   
@@ -29,7 +29,7 @@ export default class App extends Component {
 
     return (
       <>
-      <SearchBar currentValue={this.state.search}searchHandle={this.searchHandle} />
+      <SearchBar currentValue={this.state.searchPoke} searchHandle={this.searchHandle} />
       <PokeList filterPoke={filterPoke} />
 
 </>
