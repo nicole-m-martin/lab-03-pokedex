@@ -12,7 +12,7 @@ export default class SearchPage extends React.Component {
     pokemonData: [],
     search: '',
     sortBy: '',
-    sortOrder: '',
+    sortOrder: 'asc',
     loading: false,
   }
 
@@ -38,6 +38,7 @@ export default class SearchPage extends React.Component {
   // submitClickHandle = async (e) => {
   //   this.fetchPokemon()
   // }
+
 
  // search state handler
  searchHandle = async (e) => {
@@ -69,8 +70,7 @@ render() {
   // add the JSX to render onto the SearchPage
   return (
     <>
-    <SearchBar  searchHandle={this.searchHandle}
-    sortBy= {this.state.sortBy}/>
+    <SearchBar  searchHandle={this.searchHandle}/>
     <Sort sortByHandle={this.sortByHandle} sortOrderHandle={this.sortOrderHandle}  /> 
           
     <PokeList pokemonData={this.state.pokemonData}
