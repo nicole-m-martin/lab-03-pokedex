@@ -1,65 +1,55 @@
-import React, { Component } from 'react'
-import pokemon from '../data'
+// to use Hooks import them in {}
+import React, { useState, useEffect } from 'react'
 import PokeList from './PokeList.js'
-import SearchBar from './SearchBar.js'
-import Sort from './Sort.js'
+// axios is a way to get data from api's
+// npm i axios to install
+import axios from 'axios'
+import SearchBar from './SearchBar'
 
 
-// set the global state
-export default class App extends Component {
-  state = {
-    pokemon: pokemon,
-    search: '',
-    sortBy: 'pokemon',
-    sortOrder: 'a',
+// rafce makes a new arrow function start
+const SearchPage = () => {
+   // set the state with useState hook, with empty array
+   const [pokemons, setPoke] = useState([])
+  //  set the loading spinner with useState true
+   const [isLoading, setIsLoading] = useState(true)
+   // this is using the state from the query 
+   const [query, setQuery] = useState('')
+
+   // useEffect hook will fire off events
+  useEffect(() => {
+    // async is always used with await
+    const fetchPokemon = async () => {
+      setIsLoading(true)
+      // this is where you grab the api
+      // the ${query} represents whatever the user types
+      const data = await axios.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${query}`)
 
 
-  } 
+       // set the data.results with setItems
+       setPoke(data.results)
+       // set the isLoading to false because its done loading
+       setIsLoading(false)
+     }
+     // call the fetchItems function
+     fetchPokemon()
+     // now we add the query state and is the dependency 
+   }, [query])
 
-  // search state handler
-  searchHandle = (e) => {
-    this.setState({
-      search: e.target.value
-    })
-  }
-// sort by type state handler
-  sortByHandle = (e) => {
-    this.setState({
-      sortBy: e.target.value
-    })
-  }
-// sort by order handler
-  sortOrderHandle = (e) => {
-    this.setState({
-      sortOrder: e.target.value
-    })
-  }
-  
 
-  render() {
-    // filter this pokemon 
-    const filterPoke = pokemon.filter(pokemon => pokemon.pokemon.includes(this.state.search))
-    // sort the pokemon 
-    if (this.state.sortBy !== '') {
-      // Ascending order
-      if (this.state.sortOrder === 'a') {
-      (this.state.pokemon.sort((a, b) => a[this.state.sortBy].localeCompare(b[this.state.sortBy])))
-      // Descending order
-      } else {this.state.pokemon.sort((a, b) => b[this.state.sortBy].localeCompare(a[this.state.sortBy]))}
-    }
-  
+  return (
+     // add the JSX to render onto the SearchPage
+    <div>
+      {/* this adds the search input */}
+      {/* and the arrow functions to access, and call a function setQuery */}
+      <SearchBar getQuery={(q) => setQuery(q)} />
+      {/* Below we are taking our global state and passing it in as a PROP */}
+      {/* Pass in the PROPS isLoading and items to PokeList.js */}
+       <PokeList isLoading={isLoading} pokemon={pokemons} />
+    </div>
+  )
+}
+export default SearchPage
 
       
-    // add the JSX to render onto the SearchPage
-    return (
-      <>
-      <SearchBar currentValue={this.state.searchPoke} searchHandle={this.searchHandle} />
-      <Sort sortByHandle={this.sortByHandle} sortOrderHandle={this.sortOrderHandle}  /> 
-            
-      <PokeList filterPoke={filterPoke} />
-
-</>
-    );
-  }
-}
 
