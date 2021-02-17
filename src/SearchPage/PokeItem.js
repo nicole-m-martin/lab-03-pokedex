@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
+
 
 export default class PokeItem extends Component {
   render() {
     return (
       
-
+ // how to link to the detail page when clicked
+ <Link to={this.props.pokemon.pokemon}>
     <div className='poke-card'>
       
         <div className='poke-card-front'>
@@ -25,7 +29,9 @@ export default class PokeItem extends Component {
           </ul>
         </div>
       </div>
+      </Link>
       
     )
   }
 }
+

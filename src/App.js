@@ -4,11 +4,12 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Header from './Header/Header.js';
-
 import './App.css';
+import Header from './Header/Header.js';
 import Home from './HomePage/HomePage.js';
 import SearchPage from './SearchPage/SearchPage';
+import DetailPage from './SearchPage/DetailPage';
+import HomePage from './HomePage/HomePage.js';
 
 export default class App extends Component {
   render() {
@@ -18,11 +19,16 @@ export default class App extends Component {
           <Header />
 
           <Switch>
-            <Route path="/SearchPage">
+            <Route path="/SearchPage"
+            exact component={SearchPage}>
               <SearchPage />
             </Route>
-            <Route path="/">
+            <Route path="/"
+            exact component={HomePage}>
               <Home />
+            </Route>
+            <Route path='/DetailPage'
+            exact component={DetailPage}>
             </Route>
           </Switch>
         </div>
