@@ -1,65 +1,84 @@
-import React, { Component } from 'react'
-import pokemon from '../data'
+
+import React from 'react'
+import SearchBar from './SearchBar'
+import request from 'superagent'
 import PokeList from './PokeList.js'
-import SearchBar from './SearchBar.js'
 import Sort from './Sort.js'
 
 
-// set the global state
-export default class App extends Component {
+
+export default class SearchPage extends React.Component {
   state = {
-    pokemon: pokemon,
+    pokemonData: [],
     search: '',
-    sortBy: 'pokemon',
-    sortOrder: 'a',
-
-
-  } 
-
-  // search state handler
-  searchHandle = (e) => {
-    this.setState({
-      search: e.target.value
-    })
+    sortBy: '',
+    sortOrder: '',
+    loading: false,
   }
+
+  fetchPokemon = async () => {
+    this.setState({loading:true})
+  
+    const result = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.search}&sort=${this.state.sortBy}&direction=${this.state.sortOrder}`)
+   
+      this.setState({ 
+      pokemonData: result.body.results,
+      loading: false, 
+    })
+   
+  }
+
+
+  componentDidMount() {
+    this.fetchPokemon();
+    console.log(this.state.pokemon);
+  }
+
+  // submit button handler
+  // submitClickHandle = async (e) => {
+  //   this.fetchPokemon()
+  // }
+
+ // search state handler
+ searchHandle = async (e) => {
+  this.setState({
+    search: e.target.value
+  })
+  await this.fetchPokemon()
+}
+
 // sort by type state handler
-  sortByHandle = (e) => {
-    this.setState({
-      sortBy: e.target.value
-    })
-  }
+sortByHandle = async (e) => {
+  this.setState({
+    sortBy: e.target.value
+  })
+  await this.fetchPokemon()
+}
 // sort by order handler
-  sortOrderHandle = (e) => {
-    this.setState({
-      sortOrder: e.target.value
-    })
-  }
-  
+sortOrderHandle = async (e) => {
+   this.setState({
+    sortOrder: e.target.value
+  })
+  await this.fetchPokemon()
+}
 
-  render() {
-    // filter this pokemon 
-    const filterPoke = pokemon.filter(pokemon => pokemon.pokemon.includes(this.state.search))
-    // sort the pokemon 
-    if (this.state.sortBy !== '') {
-      // Ascending order
-      if (this.state.sortOrder === 'a') {
-      (this.state.pokemon.sort((a, b) => a[this.state.sortBy].localeCompare(b[this.state.sortBy])))
-      // Descending order
-      } else {this.state.pokemon.sort((a, b) => b[this.state.sortBy].localeCompare(a[this.state.sortBy]))}
-    }
-  
 
-      
-    // add the JSX to render onto the SearchPage
-    return (
-      <>
-      <SearchBar currentValue={this.state.searchPoke} searchHandle={this.searchHandle} />
-      <Sort sortByHandle={this.sortByHandle} sortOrderHandle={this.sortOrderHandle}  /> 
-            
-      <PokeList filterPoke={filterPoke} />
+render() {
+
+    
+  // add the JSX to render onto the SearchPage
+  return (
+    <>
+    <SearchBar  searchHandle={this.searchHandle}
+    sortBy= {this.state.sortBy}/>
+    <Sort sortByHandle={this.sortByHandle} sortOrderHandle={this.sortOrderHandle}  /> 
+          
+    <PokeList pokemonData={this.state.pokemonData}
+    loading = {this.state.loading} />
 
 </>
-    );
-  }
+  );
 }
+}
+      
 

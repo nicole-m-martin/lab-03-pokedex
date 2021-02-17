@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import pokemon from '../data.js';
 import PokeItem from './PokeItem.js'
+import Spinner from './Spinner'
 
 
 
@@ -8,30 +9,12 @@ export default class PokeList extends Component {
   render() {
     return (
       <section className='poke-cards'>
-          {this.props.filterPoke.map(pokemon => 
-          <PokeItem pokemon={pokemon} key={pokemon._id}/>
+          { this.props.loading ? <Spinner /> :
+          this.props.pokemonData.map(poke => 
+          <PokeItem pokemon={poke.pokemon} image={poke.url_image} shape={poke.shape} ability={poke.ability_1} type={poke.type_1}
+            key={poke._id} />
               )}
               </section>
     )
   }
 }
-
-
-
-
-
-
-
-// const PokeList = ({pokemons}) => {
-//   return (
-//     <ul>
-//         {pokemons.map((pokemon) => 
-//          <PokeItem pokemon={pokemon} key={pokemon._id}/>
-//         )}
-
-//       </ul>
-    
-//   )
-// }
-
-// export default PokeList
