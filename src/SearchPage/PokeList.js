@@ -11,7 +11,7 @@ export default class PokeList extends Component {
       <section className='poke-cards'>
           { this.props.loading ? <Spinner /> :
           this.props.pokemonData.map(poke => 
-          <PokeItem pokemon={poke.pokemon} image={poke.url_image} ability={poke.ability_1} shape={poke.shape} type={poke.type_1}
+          <PokeItem pokemon={poke.pokemon} image={poke.url_image} shape={poke.shape} ability={poke.ability_1} type={poke.type_1}
             key={poke._id} />
               )}
               </section>
