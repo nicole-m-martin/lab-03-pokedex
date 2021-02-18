@@ -10,7 +10,7 @@ export default class SearchPage extends Component {
         <NavLink className={style2.headerLinks} exact activeClassName='selected' to='/'>
           Home  
           </NavLink>
-          <NavLink className={style2.headerLinks} exact activeClassName='selected' to='./SearchPage/SearchPage.js'>
+          <NavLink className={style2.headerLinks} exact activeClassName='selected' to='/pokemon'>
           Search 
           </NavLink>
 
