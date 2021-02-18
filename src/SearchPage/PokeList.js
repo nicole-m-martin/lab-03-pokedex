@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import pokemon from '../data.js';
 import PokeItem from './PokeItem.js'
 import Spinner from './Spinner'
 

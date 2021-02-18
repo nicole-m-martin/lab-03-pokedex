@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 input,
-select {
+select,
+button {
   display: block;
   padding: 10px;
   font-size: 20px;
@@ -7,7 +10,6 @@ select {
   border-radius: 5px;
   width: 15%;
   margin: 15px;
-  margin-left: 10px;
   outline: none;
 }
 
@@ -40,4 +42,28 @@ img {
 
 body {
   background: #000 url('./img/background.png') no-repeat center center/cover;
+}
+
+h1,
+h2,
+p {
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: capitalize;
+}
+
+h2 {
+  margin-left: 15px;
+}
+
+.detail-card {
+  color: darkblue;
+  display: flex;
+  flex-direction: column;
+  flex-direction: center;
+  align-items: center;
+}
+
+.pika-pic {
+  margin-left: 25px;
 }
