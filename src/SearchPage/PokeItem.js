@@ -5,7 +5,7 @@ export default class PokeItem extends Component {
   render() {
     return (
       
-      <Link to={this.props.pokemon}>
+      <Link className='poke-links' to={this.props.pokemon} style={{ textDecoration: 'none', color: 'black' }}>
     <div className='poke-card'>
       
         <div className='poke-card-front'>

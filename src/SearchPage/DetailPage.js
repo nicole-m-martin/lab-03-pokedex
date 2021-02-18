@@ -10,7 +10,7 @@ export default class DetailPage extends Component {
   componentDidMount = async () => {        
       this.setState({ loading: true });
   
-      const result = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokebase=${this.props.match.params.pokemonName}&sort=asc`);
+      const result = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.props.match.params.pokemonName}&sort=asc`);
   
       this.setState({ 
         loading: false,
@@ -26,15 +26,21 @@ export default class DetailPage extends Component {
               this.state.loading
                   ? <Spinner /> 
                   : <div>
+                    <div className='detail-card'>
                       <img src={this.state.pokemonData.url_image} alt="pokemon" />
-                     <p>{this.state.pokemonData.pokemon}</p>
-                     <p>{this.state.pokemonData.attack}</p>
-                     <p>{this.state.pokemonData.defense}</p>
-                     <p>{this.state.pokemonData.type_1}</p>
-                     <p>{this.state.pokemonData.type_2}</p>
-                     <p>{this.state.pokemonData.shape}</p>
-                     <p>{this.state.pokemonData.ability_1}</p>
-                     <p>{this.state.pokemonData.ability_2}</p>
+                     <h1>{this.state.pokemonData.pokemon}</h1>
+                     <p>HP: {this.state.pokemonData.hp}</p>
+                     <p>Ability: {this.state.pokemonData.ability_1}</p>
+                     <p>Hidden Ability: {this.state.pokemonData.ability_hidden}</p>
+                     <p>Shape: {this.state.pokemonData.shape}</p>
+                     <p>Speed: {this.state.pokemonData.speed}</p>
+                     <p>Height: {this.state.pokemonData.height}</p>
+                     <p>Weight: {this.state.pokemonData.weight}</p>
+                     <p>Base EXP: {this.state.pokemonData.base_experience}</p>
+                     <p>Attack: {this.state.pokemonData.attack}</p>
+                     <p>Special Attack: {this.state.pokemonData.special_attack}</p>
+                     <p>Defense: {this.state.pokemonData.defense}</p>
+                 </div>
                  </div>
              }
           </div>
